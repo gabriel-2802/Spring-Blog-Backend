@@ -45,4 +45,14 @@ public class PostController {
         return postService.deletePost(id);
     }
 
+    @GetMapping("/categories")
+    public ResponseEntity<List<String>> categories() {
+        return postService.categories();
+    }
+
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<Post>> category(@PathVariable String category) {
+        return postService.category(category);
+    }
+
 }

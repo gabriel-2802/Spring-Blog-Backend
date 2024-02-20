@@ -7,6 +7,7 @@ import com.app.demo.entities.Post;
 import com.app.demo.repositories.PostRepository;
 import com.app.demo.services.abstracts.CommentService;
 import com.app.demo.services.abstracts.PostService;
+import com.app.demo.entities.Category;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -101,5 +102,15 @@ public class PostServiceV1 implements PostService {
             return ResponseEntity.badRequest().body(null);
         }
         return ResponseEntity.ok(post);
+    }
+
+    @Override
+    public ResponseEntity<List<String>> categories() {
+        return ResponseEntity.ok(Category.getCategories());
+    }
+
+    @Override
+    public ResponseEntity<List<Post>> category(String category) {
+        return ResponseEntity.ok(postRepository.findByCategory(Category.valueOf(category)));
     }
 }

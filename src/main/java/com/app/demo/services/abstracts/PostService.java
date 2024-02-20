@@ -12,4 +12,8 @@ public interface PostService {
     ResponseEntity<String> updatePost(int id, PostDto postDto);
     ResponseEntity<List<Post>> allPosts();
     ResponseEntity<Post> findPost(int id);
+
+    ResponseEntity<List<String>> categories();
+
+    ResponseEntity<List<Post>> category(String category);
 }
